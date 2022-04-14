@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import EmployeeService from '../services/EmployeeService';
+import DisplayEmployee from './DisplayEmployee';
 
 const ListEmployee = () => {
 
@@ -34,16 +35,7 @@ const ListEmployee = () => {
         <tbody>
           {
             employees.map(
-              employee =>
-              <tr key = {employee.id}>
-                <td>{employee.id}</td>
-                <td>{employee.firstName}</td>
-                <td>{employee.lastName}</td>
-                <td>{employee.emailId}</td>
-                <td>
-                  <NavLink className="btn btn-info" to={`/update-employee/${employee.id}`}>Update</NavLink>
-                </td>
-              </tr>
+              employee => <DisplayEmployee employee={employee}/>
             )
           }
         </tbody>

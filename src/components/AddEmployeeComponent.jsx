@@ -31,13 +31,13 @@ const AddEmployeeComponent = () => {
 
   useEffect(() => {
     
-  EmployeeService.getEmployeeById(id)
-  .then(response => {
-    setFirstName(response.data.firstName);
-    setLastName(response.data.lastName);
-    setEmailId(response.data.emailId);
-  })
-  .catch(error => console.log(error))
+    EmployeeService.getEmployeeById(id)
+    .then(response => {
+      setFirstName(response.data.firstName);
+      setLastName(response.data.lastName);
+      setEmailId(response.data.emailId);
+    })
+    .catch(error => console.log(error))
 
   }, [])
    

@@ -44,7 +44,7 @@ const ListEmployee = () => {
         </tbody>
       </table>
 
-      <NavLink to='/add-employee' className='btn btn-primary mb-2'>Add Employee</NavLink>
+      <NavLink to='/add-employee' className='btn btn-info mb-2'>Add Employee</NavLink>
     </div>
   )
 }

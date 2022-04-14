@@ -2,13 +2,13 @@ import React from 'react';
 
 const HeaderComponent = () => {
   return (
-    <div>
-      <header>
-        <nav href="https://javaguides.net" className='navbar navbar-expand-md navbar-brand mb-4'>
+    <header>
+      <nav href="https://javaguides.net" className='d-flex p-2 justify-content-center navbar mb-4 '>
+        <div>
           <h5>Employee Management Application</h5>
-        </nav>
-      </header>
-    </div>
+        </div>
+      </nav>
+    </header>
   )
 }
 

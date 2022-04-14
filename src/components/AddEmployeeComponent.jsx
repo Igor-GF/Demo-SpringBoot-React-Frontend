@@ -88,9 +88,9 @@ const AddEmployeeComponent = () => {
               />
             </div>
 
-            <button className='btn btn-success' onClick={(e) => saveOrUpdateEmployee(e)}>Submit</button>
+            <button className='btn btn-success m-1' onClick={(e) => saveOrUpdateEmployee(e)}>Submit</button>
 
-            <NavLink to='/employees' className='btn btn-danger'>Cancel</NavLink>
+            <NavLink to='/employees' className='btn btn-danger m-1'>Cancel</NavLink>
           </form>
         </div>
       </div>

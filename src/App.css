@@ -1,3 +1,10 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(40, 28, 77);
+  color: white;
+}
+
 .footer {
   position: absolute;
   bottom: 0;

@@ -9,22 +9,25 @@ const ListEmployee = () => {
 
   useEffect(() => {
     
+    getAllEmployees();
+
+  }, []);
+
+  const getAllEmployees = () => {
+
     EmployeeService.getAllEmployees()
     .then(response => {
       setEmployees(response.data);
-      console.log(response);
     })
     .catch(error => {
       console.log(error);
     })
-
-  }, []);
-  
+  }
 
   return (
     <div className="container">
       <h2 className="text-center"> List Employees </h2>
-      <NavLink to='/add-employee' className='btn btn-primary mb-2'>Add Employee</NavLink>
+      
       <table className="table table-bordered table-striped">
         <thead>
           <th>Employee Id</th>
@@ -35,11 +38,13 @@ const ListEmployee = () => {
         <tbody>
           {
             employees.map(
-              employee => <DisplayEmployee employee={employee}/>
+              employee => <DisplayEmployee employee={employee} key={employee.id} redirection={getAllEmployees}/>
             )
           }
         </tbody>
       </table>
+
+      <NavLink to='/add-employee' className='btn btn-primary mb-2'>Add Employee</NavLink>
     </div>
   )
 }

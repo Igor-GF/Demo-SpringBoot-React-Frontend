@@ -13,9 +13,10 @@ function App() {
         <HeaderComponent />
         <div className='container'>
           <Routes>
-            <Route path='/' element={<ListEmployee/>} />
-            <Route path='/employees' element={<ListEmployee/>} />
-            <Route path='/add-employee' element={<AddEmployeeComponent/>} />
+            <Route path='/' element={<ListEmployee />} />
+            <Route path='/employees' element={<ListEmployee />} />
+            <Route path='/add-employee' element={<AddEmployeeComponent />} />
+            <Route path='/update-employee/:id' element={<AddEmployeeComponent />} />
           </Routes>
         </div>
         <FooterComponent />

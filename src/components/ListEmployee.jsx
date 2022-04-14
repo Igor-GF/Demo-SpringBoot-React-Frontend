@@ -40,6 +40,9 @@ const ListEmployee = () => {
                 <td>{employee.firstName}</td>
                 <td>{employee.lastName}</td>
                 <td>{employee.emailId}</td>
+                <td>
+                  <NavLink className="btn btn-info" to={`/update-employee/${employee.id}`}>Update</NavLink>
+                </td>
               </tr>
             )
           }

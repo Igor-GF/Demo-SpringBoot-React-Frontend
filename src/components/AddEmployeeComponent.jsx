@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import EmployeeService from '../services/EmployeeService';
 
 const AddEmployeeComponent = () => {
@@ -8,23 +8,54 @@ const AddEmployeeComponent = () => {
   const [lastName, setLastName] = useState("");
   const [emailId, setEmailId] = useState("");
   const navigate = useNavigate();
+  const { id } = useParams();
 
-   const saveEmployee = (e) => {
-     e.preventDefault();
-     const employee = { firstName, lastName, emailId };
+  const saveOrUpdateEmployee = (e) => {
+    e.preventDefault();
+    
+    const employee = { firstName, lastName, emailId };
 
-     EmployeeService.createEmployee(employee)
-     .then(response => {
-        console.log(response.data);
-        navigate('/employees');
-     })
-     .catch((error) => console.log(error))
-   }
+    if(id) {
+
+      EmployeeService.updateEmployeeById(id, employee)
+      .then(response => navigate('/employees'))
+      .catch((error) => console.log(error))
+
+    } else {
+
+      EmployeeService.createEmployee(employee)
+      .then(response => navigate('/employees'))
+      .catch((error) => console.log(error))
+    }
+  }
+
+  useEffect(() => {
+    
+  EmployeeService.getEmployeeById(id)
+  .then(response => {
+    setFirstName(response.data.firstName);
+    setLastName(response.data.lastName);
+    setEmailId(response.data.emailId);
+  })
+  .catch(error => console.log(error))
+
+  }, [])
+   
+  const formTitle = () => {
+
+    if(id) { 
+      return <h2 className='text-center'>Update Employee</h2>; 
+    } else {
+      return <h2 className='text-center'>Add Employee</h2>;
+    }
+  }
 
   return (
     <div>
       <div className='card col-6 offset-md-3 mt-4'>
-        <h2 className='text-center'>Add Employee</h2>
+        {
+          formTitle()
+        }
         <div className='card-body'>
           <form>
             <div className='form-grout mb-2'>
@@ -57,7 +88,7 @@ const AddEmployeeComponent = () => {
               />
             </div>
 
-            <button className='btn btn-success' onClick={(e) => saveEmployee(e)}>Submit</button>
+            <button className='btn btn-success' onClick={(e) => saveOrUpdateEmployee(e)}>Submit</button>
 
             <NavLink to='/employees' className='btn btn-danger'>Cancel</NavLink>
           </form>

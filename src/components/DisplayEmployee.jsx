@@ -20,7 +20,9 @@ const DisplayEmployee = ({ employee, redirection }) => {
       <td>
         <NavLink className="btn btn-info m-1" to={`/update-employee/${employee.id}`}>Update</NavLink>
 
-        <button className="btn btn-danger m-1" to={`/delete-employee/${employee.id}`} onClick = {() => deleteEmployee(employee.id)}>Delete</button>
+        <button className="btn btn-danger m-1" onClick = {() => deleteEmployee(employee.id)}>Delete</button>
+
+        <NavLink className="btn btn-info m-1" to={`/employee/${employee.id}`}>View</NavLink>
       </td>
     </tr>
   )
